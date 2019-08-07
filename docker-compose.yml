@@ -1,0 +1,20 @@
+version: '3.4'
+services:
+    server:
+        build:
+            context: ./
+            dockerfile: server.Dockerfile
+        entrypoint: /server
+        expose:
+            - "67"
+            - "68"
+    client:
+        build:
+            context: ./
+            dockerfile: client.Dockerfile
+        depends_on:
+            - server
+        entrypoint: /client eth0
+        expose:
+            - "67"
+            - "68"
